@@ -16,8 +16,6 @@ TWILIO_API_TOKEN = TWILIO_API_TOKEN
 ## STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 
-
-
 stock_parameters = {"function": "TIME_SERIES_DAILY_ADJUSTED",
               "symbol": STOCK,
               "apikey": AV_API
@@ -66,13 +64,13 @@ if abs(delta_percent) > 4:
         except IndexError:
             print("No more Articles for now")
             break
-        # client = Client(ACCOUNT_SID, TWILIO_API_TOKEN)
-        # message = client.messages \
-        #                 .create(
-        #                      body=f"TSLA: {TSLA}\nHeadline: {headline} \nDescription: {description} \nURL: {URL}",
-        #                      from_='+16205089044',
-        #                      to='+16477818578'
-        #                  )
+        client = Client(ACCOUNT_SID, TWILIO_API_TOKEN)
+        message = client.messages \
+                        .create(
+                             body=f"TSLA: {TSLA}\nHeadline: {headline} \nDescription: {description} \nURL: {URL}",
+                             from_='+16205089044',
+                             to='ENTER_YOUR_NUMBER'
+                         )
 else:
     print(f"No significant change in {STOCK} price")
 
